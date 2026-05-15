@@ -4,7 +4,8 @@ from playwright.sync_api import Page, expect
 
 # Tagging this as a critical "smoke" test
 @pytest.mark.smoke
-def test_search_for_hammer(page: Page):
+def test_search_for_hammer(custom_page_setup):
+    page = custom_page_setup
     page.goto("https://practicesoftwaretesting.com/")
     page.get_by_placeholder("Search").fill("Hammer")
     page.get_by_role("button", name="Search").click()
